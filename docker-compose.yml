@@ -39,7 +39,7 @@ services:
     container_name: celery
     build:
       context: ./
-    command: celery -A skeleton worker -Q queue1 -l INFO
+    command: celery -A skeleton worker -Q queue1 --autoscale=6,3 -l INFO
     volumes:
       - ./:/opt/skeleton
     environment:
