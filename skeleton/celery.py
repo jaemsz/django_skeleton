@@ -21,5 +21,12 @@ app.conf.task_routes = {
     },
 }
 
+app.conf.beat_schedule = {
+    'do_task': {
+        'task': 'app.tasks.do_task',
+        'schedule': 5,
+    }
+}
+
 app.autodiscover_tasks()
 

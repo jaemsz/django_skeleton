@@ -21,6 +21,20 @@ services:
       - redis
       - postgres
 
+  celerybeat:
+    container_name: celerybeat
+    build:
+      context: ./
+    command: celery -A skeleton beat
+    volumes:
+      - ./:/opt/skeleton
+    environment:
+      - DEBUG=${DEBUG}
+      - SECRET_KEY=${SECRET_KEY}
+      - ALLOWED_HOSTS=${ALLOWED_HOSTS}
+    depends_on:
+      - redis
+
   celery:
     container_name: celery
     build:
