@@ -15,5 +15,11 @@ app = Celery('skeleton')
 
 app.config_from_object('django.conf:settings', namespace='CELERY')
 
+app.conf.task_routes = {
+    'app.tasks.do_task': {
+        'queue': 'queue1',
+    },
+}
+
 app.autodiscover_tasks()
 

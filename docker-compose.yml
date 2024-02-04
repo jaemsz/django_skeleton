@@ -25,7 +25,7 @@ services:
     container_name: celery
     build:
       context: ./
-    command: celery -A skeleton worker -l INFO
+    command: celery -A skeleton worker -Q queue1 -l INFO
     volumes:
       - ./:/opt/skeleton
     environment:
